@@ -1,0 +1,278 @@
+.reabot-container {
+  display: block;
+  background-color: var(--clr-primary-200);
+  border-radius: 13px;
+  width: min(400px, 100%);
+  position: absolute;
+  transform: scale(0);
+  right: -150px;
+  transition: 300ms ease;
+  bottom: -220px;
+
+  &.active {
+    transform: scale(1);
+    right: 25px;
+    bottom: 80px;
+  }
+}
+
+.reabot-header {
+  background-color: var(--clr-neutral-900);
+  border-top-left-radius: 13px;
+  padding: 12px 22px;
+  border-top-right-radius: 13px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--clr-neutral-100);
+  font-family: var(--ff-accent);
+}
+
+.header-reabot-profile {
+  width: 50px;
+  padding: 2px;
+  border-radius: 50rem;
+  background-color: var(--clr-accent-200);
+}
+
+.chat-logs {
+  display: grid;
+  align-items: start;
+  max-width: 100%;
+}
+
+.header-title {
+  font-weight: 400;
+}
+
+.reabot-content {
+  padding: 10px;
+  background-color: var(--clr-neutral-100);
+  height: 400px;
+  position: relative;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+}
+
+.reabot-form {
+  padding: 18px 22px;
+  cursor: pointer;
+  background-color: var(--clr-primary-200);
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+
+  border-bottom-left-radius: 13px;
+  border-bottom-right-radius: 13px;
+  &:has(.user-input:focus) {
+    outline: solid 1px var(--clr-primary-900);
+  }
+}
+
+.user-input {
+  outline: none;
+  border: none;
+  font-weight: 18px;
+  background-color: transparent;
+  color: var(--clr-primary-900);
+  flex: 1;
+  border-bottom: solid 1px transparent;
+}
+
+.reabot-form-btn {
+  background-color: transparent;
+  cursor: pointer;
+  color: var(--clr-primary-900);
+  opacity: 0.9;
+  font-size: 1.2rem;
+  outline: none;
+  border: none;
+
+  &:hover {
+    color: var(--clr-accent-900);
+  }
+}
+
+/* ### Button ### */
+.reabot-btn {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 20px;
+  padding: 10px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border: none;
+  cursor: pointer;
+  background-color: var(--clr-accent-400);
+  border-radius: 100rem;
+  color: var(--clr-primary-900);
+  transition: 300ms ease;
+  font-size: 1.5rem;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &.active .assistant-icon-btn {
+    transform: rotate(45deg) scale(0);
+  }
+
+  &:not(.active) .exit-icon {
+    transform: rotate(-45deg) scale(0);
+  }
+}
+
+.assistant-icon-btn {
+  width: 75%;
+}
+
+.assistant-icon-btn,
+.exit-icon {
+  transform: rotate(0deg) scale(1);
+  transition: 300ms ease;
+  pointer-events: none;
+  position: absolute;
+}
+
+.link {
+  cursor: pointer;
+  color: var(--clr-primary-900);
+}
+
+/* Messages  */
+.message-wrapper-img {
+  border-radius: 50rem;
+  width: 20px;
+}
+
+.message {
+  max-width: 300px;
+  margin-top: 6px;
+  font-size: 1rem;
+  padding: 10px;
+  border-radius: 12px;
+
+  &[data-type="User"] {
+    border-top-right-radius: 4px;
+    place-self: flex-end;
+    background-color: var(--clr-primary-200);
+
+    &:has(+ :not(.message[data-type="User"])) {
+      margin-bottom: 10px;
+    }
+  }
+
+  &[data-type="Bot"] {
+    border-top-left-radius: 4px;
+    place-self: start;
+    background-color: var(--clr-accent-200);
+
+    &:has(+ :not(.message[data-type="Bot"])) {
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.end-of-chat {
+  display: inline-block;
+  font-size: 5px;
+  color: transparent;
+  width: 100%;
+}
+
+/* Other Topics */
+
+.other-topics {
+  margin-block: 12px 25px;
+  gap: 5px;
+  display: flex;
+  align-items: start;
+  cursor: pointer;
+  flex-direction: column;
+}
+
+.topic-span {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.topic {
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+  padding: 6px 8px;
+  display: inline-block;
+  outline: solid 1px var(--clr-accent-400);
+
+  &:hover {
+    background-color: var(--clr-accent-200);
+  }
+}
+
+/* Thinking Cloud */
+
+.thinking-elements {
+  display: flex;
+  margin-top: auto;
+  gap: 3px;
+  align-items: center;
+}
+
+.reabot-thinking {
+  width: 35px;
+}
+
+.thinking-cloud {
+  display: inline-flex;
+  border-radius: 4px;
+  padding: 6px 8px;
+  background-color: var(--clr-accent-200);
+  position: relative;
+  bottom: 25px;
+  gap: 4px;
+}
+
+.dot {
+  width: 8px;
+  border-radius: 55rem;
+  background-color: var(--clr-primary-900);
+  opacity: 0.8;
+  aspect-ratio: 1;
+  animation: bounce 1.1s ease infinite;
+  line-height: 0;
+
+  &:nth-child(2) {
+    animation-delay: 0.5s;
+  }
+  &:nth-child(3) {
+    animation-delay: 1s;
+  }
+}
+
+@keyframes bounce {
+  70% {
+    transform: translateY(0%);
+  }
+  80% {
+    transform: translateY(-5px);
+  }
+  90% {
+    transform: translateY(0%);
+  }
+  95% {
+    transform: translateY(-7%);
+  }
+  97% {
+    transform: translateY(0%);
+  }
+  99% {
+    transform: translateY(-3%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
